@@ -104,28 +104,28 @@ void loop(){
     }
     else{
       /*Set fingerprint LED ring to always ON in red*/
-      fingerprint.ctrlLED(/*LEDMode = */fingerprint.eKeepsOn, /*LEDColor = */fingerprint.eLEDRed, /*blinkCount = */0);
-      Serial.println("Matching fails");
+        fingerprint.ctrlLED(/*LEDMode = */fingerprint.eKeepsOn, /*LEDColor = */fingerprint.eLEDRed, /*blinkCount = */0);
+        Serial.println("Matching fails");
+
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("   WELCOME TO SSA ");
+        lcd.setCursor(0, 1);
+        lcd.print("      <SORRY>");
+        lcd.setCursor(0, 2);
+        lcd.print("   Access Denied!");
+        lcd.setCursor(0, 3);
+        lcd.print(" </> Scan Agian! </>");
+        delay(5000);
+        printWelcomeMessage();
+
+    
     }
   }else{
     Serial.println("Capturing fails");
     /*Get error code information*/
     //desc = fingerprint.getErrorDescription();
     //Serial.println(desc);
-
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("   WELCOME TO SSA ");
-    lcd.setCursor(0, 1);
-    lcd.print("      <SORRY>");
-    lcd.setCursor(0, 2);
-    lcd.print("   Access Denied!");
-    lcd.setCursor(0, 3);
-    lcd.print(" </> Scan Agian! </>");
-    delay(5000);
-    printWelcomeMessage();
-
- 
   }
   Serial.println("-----------------------------");
   delay(1000);
